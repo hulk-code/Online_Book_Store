@@ -15,7 +15,7 @@ const Navber = () => {
 
       {/* Left */}
       <div className="navbar-start">
-        <h1 className="text-2xl font-bold">Book Vibe</h1>
+        <h1 className="text-2xl font-bold">Книжный Мир</h1>
       </div>
 
       {/* Center */}
