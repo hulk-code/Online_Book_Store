@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
   console.log(book);
@@ -11,6 +12,7 @@ const Book = ({ book }) => {
   return (
     
     <div>
+      <Link to={`/bookDetails/${book.bookId}`}>
       <div className="card bg-base-100 w-96 shadow-sm">
         <figure className="px-10 pt-10 h-50 bg-blue-50 flex justify-center">
           <img
@@ -37,6 +39,7 @@ const Book = ({ book }) => {
           </div>
         </div>
       </div>
+      </Link>
     </div>
   );
 };
