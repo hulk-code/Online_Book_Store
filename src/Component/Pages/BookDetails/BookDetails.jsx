@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoredDB, addToWishList } from "../../Utility/utility";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -20,11 +21,18 @@ const BookDetails = () => {
     yearOfPublishing,
   } = singleBook;
 
+  const handleMarkAsRead = (id) => {
+    addToStoredDB(id);
+  };
+
+  const handleMarkAsWishList = (id) => {
+    addToWishList(id);
+  };
+
   return (
     <div className="max-w-6xl mx-auto p-6 bg-base-200 rounded-xl">
       <div className="grid md:grid-cols-2 gap-10 items-center">
 
-        {/* Left Side - Image */}
         <div className="bg-base-100 p-10 rounded-xl flex justify-center">
           <img
             src={image}
@@ -33,7 +41,6 @@ const BookDetails = () => {
           />
         </div>
 
-        {/* Right Side - Details */}
         <div>
           <h1 className="text-3xl font-bold mb-2">{bookName}</h1>
 
@@ -49,39 +56,27 @@ const BookDetails = () => {
             <span className="font-bold">Review :</span> {review}
           </p>
 
-          {/* Tags */}
-          <div className="flex gap-3 mb-6">
-            <span className="badge badge-success">#{category}</span>
-            <span className="badge badge-outline">#Young Adult</span>
-          </div>
-
-          <hr className="mb-4"/>
-
-          {/* Book Info */}
           <div className="space-y-2 text-sm">
-            <p>
-              <span className="text-gray-500">Number of Pages :</span>{" "}
-              {totalPages}
-            </p>
-
-            <p>
-              <span className="text-gray-500">Publisher :</span> {publisher}
-            </p>
-
-            <p>
-              <span className="text-gray-500">Year of Publishing :</span>{" "}
-              {yearOfPublishing}
-            </p>
-
-            <p>
-              <span className="text-gray-500">Rating :</span> {rating}
-            </p>
+            <p>Number of Pages : {totalPages}</p>
+            <p>Publisher : {publisher}</p>
+            <p>Year of Publishing : {yearOfPublishing}</p>
+            <p>Rating : {rating}</p>
           </div>
 
-          {/* Buttons */}
           <div className="mt-6 flex gap-4">
-            <button className="btn btn-outline">Read</button>
-            <button className="btn btn-info text-white">Wishlist</button>
+            <button
+              className="btn btn-outline"
+              onClick={() => handleMarkAsRead(bookId)}
+            >
+              Read
+            </button>
+
+            <button
+              className="btn btn-info text-white"
+              onClick={() => handleMarkAsWishList(bookId)}
+            >
+              Wishlist
+            </button>
           </div>
         </div>
 

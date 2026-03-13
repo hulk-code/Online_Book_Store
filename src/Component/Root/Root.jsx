@@ -5,32 +5,37 @@ import Display from "../Pages/Display/Display";
 import ListedBook from "../Pages/ListedBook/ListedBook";
 import pageToRead from "../Pages/pageToRead/pageToRead";
 import BookDetails from "../Pages/BookDetails/BookDetails";
+import ReadList from "../Pages/ReadList/ReadList";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
-     errorElement: <ErrorPage></ErrorPage>,
-     children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        index:true ,
-        path:"/",
-        Component:Display
+        index: true,
+        path: "/",
+        Component: Display,
       },
       {
-         path:"/listedBook",
-        Component:ListedBook
+        path: "/listedBook",
+        Component: ListedBook,
       },
       {
-         path:"/pageToRead",
-        Component:pageToRead
+        path: "/pageToRead",
+        Component: pageToRead,
       },
       {
-         path:"/bookDetails/:id",
-         loader:()=> fetch('/booksData.json'),
-        Component:BookDetails
+        path: "/readList",
+        loader: () => fetch("/booksData.json"),
+        Component: ReadList,
       },
-
-     ]
+      {
+        path: "/bookDetails/:id",
+        loader: () => fetch("/booksData.json"),
+        Component: BookDetails,
+      },
+    ],
   },
 ]);

@@ -5,15 +5,24 @@ const Navber = () => {
 
   const links = (
     <>
-    <NavLink to='/'><a className="text-green-600 border border-green-500 rounded-lg px-4">Home</a></NavLink>
-     <NavLink to='/listedBook'><a>Listed Books</a></NavLink>
-     <NavLink to='/pageToRead'><a>Pages to Read</a></NavLink>
-      
+      <NavLink to="/">
+        <a className="text-green-600 border border-green-500 rounded-lg px-4 py-1">
+          Home
+        </a>
+      </NavLink>
+
+      <NavLink to="/readList">
+        <a>Read Books</a>
+      </NavLink>
+
+      <NavLink to="/pageToRead">
+        <a>Pages to Read</a>
+      </NavLink>
     </>
   );
 
   return (
-    <div className="navbar bg-gray-100 px-10 py-4">
+    <div className="navbar bg-gray-100 px-10 py-6 fixed top-0 left-0 w-full z-50">
 
       {/* Left */}
       <div className="navbar-start">
@@ -29,7 +38,6 @@ const Navber = () => {
 
       {/* Right */}
       <div className="navbar-end gap-4">
-
         <button className="btn bg-green-600 text-white border-none">
           Sign In
         </button>
@@ -37,7 +45,6 @@ const Navber = () => {
         <button className="btn bg-cyan-500 text-white border-none">
           Sign Up
         </button>
-
       </div>
 
     </div>
